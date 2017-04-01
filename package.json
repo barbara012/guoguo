@@ -24,8 +24,6 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.0",
-    "gulp-rev": "^7.1.2",
-    "gulp-rev-collector": "^1.1.1",
     "gulp-watch": "^4.3.11",
     "run-sequence": "^1.2.2"
   }

@@ -1,6 +1,8 @@
+/node_modules
 /error.log
 /access.log
 
 /public/dist
+/public/app/*
 
 .idea

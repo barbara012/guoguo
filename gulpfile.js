@@ -6,8 +6,8 @@ var gulp         = require('gulp'),
     less         = require('gulp-less'),
     watch        = require('gulp-watch'),
     runSequence  = require('run-sequence'),
-    rev          = require('gulp-rev'),
-    revCollector = require('gulp-rev-collector');
+    rev          = require('./modules/gulp-rev'),
+    revCollector = require('./modules/gulp-rev-collector');
 
 var config = {
     less: './public/less/*.less',
