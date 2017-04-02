@@ -6,6 +6,7 @@ var gulp         = require('gulp'),
     less         = require('gulp-less'),
     watch        = require('gulp-watch'),
     runSequence  = require('run-sequence'),
+    htmlMin      = require('gulp-htmlmin'),
     rev          = require('./modules/gulp-rev'),
     revCollector = require('./modules/gulp-rev-collector');
 
@@ -40,6 +41,16 @@ gulp.task('img', function() {
     return gulp.src(config.img)
         .pipe(gulp.dest(config.destImg));
 });
+gulp.task('views', function() {
+    return gulp.src('./vws/**/*.ejs', {base: './vws'})
+        .pipe(htmlMin({
+            removeComments: true,
+            collapseWhitespace: true,
+            removeEmptyAttributes: true,
+            minifyJS: true
+        }))
+        .pipe(gulp.dest('./views'));
+});
 gulp.task('mainFest', function() {
     return gulp.src(['./public/dist/css/*.css', './public/dist/js/*.js', './public/dist/image/*.{png,jpg,gif,ico}'])
         .pipe(rev())
@@ -61,6 +72,7 @@ gulp.task('dev', function(done) {
         'js',
         'lessWithOutCompress',
         'img',
+        'views',
         'mainFest',
         'replaceCss',
         'replaceEjs',
@@ -74,6 +86,7 @@ gulp.task('release', function (done) {
         'js',
         'less',
         'img',
+        'views',
         'mainFest',
         'replaceCss',
         'replaceEjs',
